@@ -17,7 +17,7 @@ VMAPAdBreak = (function() {
     _ref = xml.childNodes;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       node = _ref[_i];
-      switch (node.nodeName) {
+      switch (node.localName) {
         case 'AdSource':
           this.adSource = new VMAPAdSource(node);
           break;
@@ -25,11 +25,11 @@ VMAPAdBreak = (function() {
           _ref1 = node.childNodes;
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             subnode = _ref1[_j];
-            if (subnode.nodeName === 'Tracking') {
-              this.trackingEvents.push = {
+            if (subnode.localName === 'Tracking') {
+              this.trackingEvents.push({
                 event: subnode.getAttribute('event'),
-                url: (subnode.textContent || subnode.text || '').trim()
-              };
+                uri: (subnode.textContent || subnode.text || '').trim()
+              });
             }
           }
           break;
@@ -52,16 +52,16 @@ var VMAPAdSource;
 VMAPAdSource = (function() {
   function VMAPAdSource(xml) {
     var node, _i, _len, _ref;
-    this.id = null;
-    this.allowMultipleAds = true;
-    this.followRedirects = true;
+    this.id = xml.getAttribute('id');
+    this.allowMultipleAds = xml.getAttribute('allowMultipleAds');
+    this.followRedirects = xml.getAttribute('followRedirects');
     this.vastAdData = null;
     this.adTagURI = null;
     this.customData = null;
-    _ref = node.childNodes;
+    _ref = xml.childNodes;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       node = _ref[_i];
-      switch (node.nodeName) {
+      switch (node.localName) {
         case 'AdTagURI':
           this.adTagURI = {
             templateType: node.getAttribute('templateType'),
@@ -96,7 +96,7 @@ VMAPAdBreak = _dereq_('./adbreak');
 VMAP = (function() {
   function VMAP(xml) {
     var node, _i, _len, _ref;
-    if (!(((xml != null ? xml.documentElement : void 0) != null) && xml.documentElement.nodeName === "VMAP")) {
+    if (!(((xml != null ? xml.documentElement : void 0) != null) && xml.documentElement.localName === "VMAP")) {
       throw new Error('Not a VMAP document');
     }
     this.version = xml.documentElement.getAttribute('version');
@@ -105,7 +105,7 @@ VMAP = (function() {
     _ref = xml.documentElement.childNodes;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       node = _ref[_i];
-      switch (node.nodeName) {
+      switch (node.localName) {
         case 'AdBreak':
           this.adBreaks.push(new VMAPAdBreak(node));
           break;
