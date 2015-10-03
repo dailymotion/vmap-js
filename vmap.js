@@ -69,7 +69,7 @@ VMAPAdSource = (function() {
           };
           break;
         case 'VASTAdData':
-          this.vastAdData = node;
+          this.vastAdData = node.firstChild;
           break;
         case 'CustomAdData':
           this.customData = node;
