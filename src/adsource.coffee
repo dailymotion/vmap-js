@@ -14,7 +14,7 @@ class VMAPAdSource
             templateType: node.getAttribute 'templateType'
             uri: (node.textContent or node.text or '').trim()
         when 'VASTAdData'
-          @vastAdData = node
+          @vastAdData = node.firstChild
         when 'CustomAdData'
           @customData = node
 
