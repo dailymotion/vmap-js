@@ -3,7 +3,7 @@
   "author": [
     "Olivier Poitrey <rs@dailymotion.com>"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "vmap.js",
   "licenses": [
     {
