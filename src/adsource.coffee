@@ -15,6 +15,10 @@ class VMAPAdSource
             uri: (node.textContent or node.text or '').trim()
         when 'VASTAdData'
           @vastAdData = node.firstChild
+          # Some browsers treats empty white-spaces or new lines as text nodes.
+          # Ensure we get the first element node
+          while @vastAdData and @vastAdData.nodeType != 1
+            @vastAdData = @vastAdData.nextSibling
         when 'CustomAdData'
           @customData = node
 
