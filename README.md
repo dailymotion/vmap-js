@@ -45,6 +45,10 @@ Provides information about an ad break.
     * `uri`: The URI of the tracker.
 * `extensions`: An array of XML nodes for each extension left as-is if any.
 
+#### Methods
+
+* `track(event, errorCode)`: Call the trackers for the given event with an option error code parameter for `error` events.
+
 ### VMAPAdSource
 
 Provides the player with either an inline ad response or a reference to an ad response.
