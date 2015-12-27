@@ -1,7 +1,7 @@
 {
     "name": "vmap",
     "author": "Olivier Poitrey <rs@dailymotion.com>",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Javascript VMAP Parser",
     "keywords": ["vmap", "ad", "advertising", "iab", "in-stream", "video"],
     "repository": {"type": "git", "url": "https://github.com/dailymotion/vmap-js"},
