@@ -8,13 +8,15 @@ Complies with [VMAP 1.0.1 spec](http://www.iab.net/media/file/VMAP.pdf).
 
 ``` javascript
 // Fetch VMAP as XML using XMLHTTPRequest
-var xhr = new window.XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.open('GET', vmapURL);
 xhr.send();
 xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
-        // Parse VMAP
-        var vmap = new VMAP(xhr.responseXML);
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            // Get a parsed VMAP object
+            const vmap = new VMAP(xhr.responseXML);
+        }
     }
 };
 ```
