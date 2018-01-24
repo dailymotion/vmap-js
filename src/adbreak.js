@@ -8,8 +8,6 @@ class VMAPAdBreak {
     this.repeatAfter = xml.getAttribute('repeatAfter');
     this.adSource = null;
     this.trackingEvents = [];
-    console.log(this.trackingEvents);
-    console.log(typeof this.trackingEvents);
     this.extensions = [];
 
     for (let nodeKey in xml.childNodes) {
@@ -39,7 +37,9 @@ class VMAPAdBreak {
   }
 
   track(event, errorCode) {
-    this.trackingEvents.forEach(function(tracker) {
+    for (let trackerKey in this.trackingEvents) {
+      const tracker = this.trackingEvents[trackerKey];
+
       if (tracker.event === event) {
         let { uri } = tracker;
         if (tracker.event === 'error') {
@@ -47,7 +47,7 @@ class VMAPAdBreak {
         }
         this.tracker(uri);
       }
-    });
+    };
   }
 
   // Easy to overwrite tracker client for unit testing

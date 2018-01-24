@@ -10,13 +10,15 @@ class VMAP {
     this.adBreaks = [];
     this.extensions = [];
 
-    for (let node in xml.documentElement.childNodes) {
-      switch (xml.documentElement.childNodes[node].localName) {
+    for (let nodeKey in xml.documentElement.childNodes) {
+      const node = xml.documentElement.childNodes[nodeKey];
+
+      switch (node.localName) {
         case 'AdBreak':
-          this.adBreaks.push(new VMAPAdBreak(xml.documentElement.childNodes[node]));
+          this.adBreaks.push(new VMAPAdBreak(node));
           break;
         case 'Extensions':
-          this.extensions = xml.documentElement.childNodes[node].childNodes;
+          this.extensions = node.childNodes;
           break;
       }
     };
