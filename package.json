@@ -27,7 +27,8 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "mocha --compilers js:babel-core/register --reporter spec test/*.js",
-        "bundle": "rollup -c"
+        "bundle-min": "rollup -c rollup.config.js --environment VMAP_BUILD:min",
+        "bundle": "rollup -c rollup.config.js & npm run-script bundle-min"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
