@@ -24,7 +24,7 @@
     "engines": {
         "node": "0.10.26"
     },
-    "main": "dist/index.js",
+    "main": "vmap-js.js",
     "scripts": {
         "test": "mocha --compilers js:babel-core/register --reporter spec test/*.js",
         "bundle-min": "rollup -c rollup.config.js --environment VMAP_BUILD:min",
