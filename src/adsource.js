@@ -7,7 +7,7 @@ class VMAPAdSource {
     this.adTagURI = null;
     this.customData = null;
 
-   for(let nodeKey in xml.childNodes) {
+    for (let nodeKey in xml.childNodes) {
       const node = xml.childNodes[nodeKey];
 
       switch (node.localName) {
@@ -21,7 +21,7 @@ class VMAPAdSource {
           this.vastAdData = node.firstChild;
           // Some browsers treats empty white-spaces or new lines as text nodes.
           // Ensure we get the first element node
-          while (this.vastAdData && (this.vastAdData.nodeType !== 1)) {
+          while (this.vastAdData && this.vastAdData.nodeType !== 1) {
             this.vastAdData = this.vastAdData.nextSibling;
           }
           break;
@@ -29,7 +29,7 @@ class VMAPAdSource {
           this.customData = node;
           break;
       }
-    };
+    }
   }
 }
 

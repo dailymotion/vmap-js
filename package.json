@@ -1,6 +1,9 @@
 {
     "name": "vmap",
     "author": "Olivier Poitrey <rs@dailymotion.com>",
+    "contributors": [
+        "Elia Maino <eliamaino@gmail.com>"
+    ],
     "version": "1.0.5",
     "description": "Javascript VMAP Parser",
     "keywords": [
@@ -28,13 +31,17 @@
     "scripts": {
         "test": "mocha --compilers js:babel-core/register --reporter spec test/*.js",
         "bundle-min": "rollup -c rollup.config.js --environment VMAP_BUILD:min",
-        "bundle": "rollup -c rollup.config.js & npm run-script bundle-min"
+        "bundle": "rollup -c rollup.config.js & npm run-script bundle-min",
+        "precommit": "pretty-quick --staged"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
         "babel-plugin-external-helpers": "^6.22.0",
         "babel-preset-es2015": "^6.24.1",
+        "husky": "^0.14.3",
         "mocha": "1.18.2",
+        "prettier": "1.10.2",
+        "pretty-quick": "^1.2.2",
         "rollup-plugin-babel": "^3.0.3",
         "rollup-plugin-uglify": "^3.0.0",
         "should": "3.2.0",

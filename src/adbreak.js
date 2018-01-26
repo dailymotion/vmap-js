@@ -27,13 +27,13 @@ class VMAPAdBreak {
                 uri: (subnode.textContent || subnode.text || '').trim()
               });
             }
-          };
+          }
           break;
         case 'Extensions':
           this.extensions = node.childNodes;
           break;
       }
-    };
+    }
   }
 
   track(event, errorCode) {
@@ -47,7 +47,7 @@ class VMAPAdBreak {
         }
         this.tracker(uri);
       }
-    };
+    }
   }
 
   // Easy to overwrite tracker client for unit testing

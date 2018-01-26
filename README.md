@@ -1,6 +1,7 @@
 # VMAP Javascript Library
 
 [![Build Status](https://travis-ci.org/dailymotion/vmap-js.png)](https://travis-ci.org/dailymotion/vmap-js)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Complies with [VMAP 1.0.1 spec](http://www.iab.net/media/file/VMAP.pdf).
 
