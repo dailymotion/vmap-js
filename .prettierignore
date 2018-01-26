@@ -1,0 +1,8 @@
+node_modules
+*.md
+*.json
+.travis.yml
+.babelrc
+.prettierrc
+.gitignore
+test/*.xml
