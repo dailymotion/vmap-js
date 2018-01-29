@@ -3,13 +3,27 @@
 [![Build Status](https://travis-ci.org/dailymotion/vmap-js.png)](https://travis-ci.org/dailymotion/vmap-js)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/vmap.svg)](https://badge.fury.io/js/vmap)
 
-Complies with [VMAP 1.0.1 spec](http://www.iab.net/media/file/VMAP.pdf).
+Parse a VMAP XML document to Javascript object. Complies with [VMAP 1.0.1 spec](http://www.iab.net/media/file/VMAP.pdf).
+
+## Installation
+
+Install with npm
+```
+npm install vmap
+```
 
 ## Usage
 
+Provide the `VMAP` constructor an XML in order to have a parsed version of it.
+
+Access `VMAP` properties using the APIs documented below.
+
 ``` javascript
-// Fetch VMAP as XML using XMLHTTPRequest
+import VMAP from 'vmap-js';
+
+// Fetch VMAP as XML
 const xhr = new XMLHttpRequest();
 xhr.open('GET', vmapURL);
 xhr.send();
@@ -65,3 +79,23 @@ Provides the player with either an inline ad response or a reference to an ad re
 * `vastAdData`: Contains an embedded VAST response.
 * `adTagURI`: Contains a URI to the VAST.
 * `customData`: Contains custom ad data.
+
+## Build and tests
+
+Install dependencies with:
+
+```
+npm install
+```
+
+The project is bundled using [Rollup](https://rollupjs.org/guide/en). Build with:
+
+```
+npm run-script build
+```
+
+Run tests with:
+
+```
+npm test
+```
