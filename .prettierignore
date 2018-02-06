@@ -6,3 +6,4 @@ node_modules
 .prettierrc
 .gitignore
 test/*.xml
+vmap-js.js

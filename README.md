@@ -21,7 +21,7 @@ Provide the `VMAP` constructor an XML in order to have a parsed version of it.
 Access `VMAP` properties using the APIs documented below.
 
 ``` javascript
-import VMAP from 'vmap-js';
+import VMAP from 'vmap';
 
 // Fetch VMAP as XML
 const xhr = new XMLHttpRequest();
