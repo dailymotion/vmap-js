@@ -25,7 +25,7 @@
     "main": "vmap-js.js",
     "module": "src/index.js",
     "scripts": {
-        "test": "mocha --compilers js:babel-core/register --reporter spec test/*.js",
+        "test": "jasmine",
         "build": "rollup -c rollup.config.js",
         "precommit": "pretty-quick --staged"
     },
@@ -33,14 +33,14 @@
         "babel-core": "^6.26.0",
         "babel-plugin-external-helpers": "^6.22.0",
         "babel-preset-es2015": "^6.24.1",
+        "babel-register": "^6.26.0",
         "husky": "^0.14.3",
-        "mocha": "1.18.2",
+        "jasmine": "^3.0.0",
         "prettier": "1.10.2",
         "pretty-quick": "^1.2.2",
         "rollup": "^0.55.1",
         "rollup-plugin-babel": "^3.0.3",
         "rollup-plugin-uglify": "^3.0.0",
-        "should": "3.2.0",
         "xmldom": "0.1.19"
     }
 }
