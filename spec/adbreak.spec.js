@@ -3,11 +3,7 @@ import { readXMLFile } from './utils';
 
 describe('AdBreaks', () => {
   const xml = readXMLFile('samples/correct-vmap.xml');
-  const xmlWithExtensions = readXMLFile(
-    'samples/correct-vmap-with-extension.xml'
-  );
   const vmap = new VMAP(xml);
-  const vmapWithExtensions = new VMAP(xmlWithExtensions);
 
   describe('#1 ad break', () => {
     const adbreak = vmap.adBreaks[0];
@@ -120,6 +116,10 @@ describe('AdBreaks', () => {
   });
 
   describe('Ad break with extensions', () => {
+    const xmlWithExtensions = readXMLFile(
+      'samples/correct-vmap-with-extension.xml'
+    );
+    const vmapWithExtensions = new VMAP(xmlWithExtensions);
     const adbreak = vmapWithExtensions.adBreaks[0];
 
     it('should parse extensions', () => {
@@ -135,6 +135,7 @@ describe('AdBreaks', () => {
                 testAttribute: 'testAttribute content',
                 testAttribute2: 'testAttribute2 content'
               },
+              children: {},
               value: 'Test value'
             },
             'vmap:Test2': {
@@ -142,18 +143,21 @@ describe('AdBreaks', () => {
                 test2Attribute: 'test2Attribute content',
                 test2Attribute2: 'test2Attribute2 content'
               },
+              children: {},
               value: 'Test2 value'
             }
           },
           value: 'Extension value'
         },
         {
+          attributes: {},
           children: {
             'vmap:Child': {
               attributes: {
                 childAttribute: 'childAttribute content',
                 childAttribute2: 'childAttribute2 content'
               },
+              children: {},
               value: 'Child value'
             }
           },

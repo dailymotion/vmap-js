@@ -31,8 +31,8 @@ class VMAPAdBreak {
           }
           break;
         case 'Extensions':
-          this.extensions = childrenByName(node, 'vmap:Extension').map(
-            extension => parseXMLNode(extension)
+          this.extensions = childrenByName(node, 'Extension').map(extension =>
+            parseXMLNode(extension)
           );
           break;
       }

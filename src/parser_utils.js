@@ -11,7 +11,12 @@ function childrenByName(node, name) {
   for (let childKey in childNodes) {
     const child = childNodes[childKey];
 
-    if (child.nodeName === name) {
+    if (
+      child.nodeName === name ||
+      (child.nodeName &&
+        child.nodeName.match(/vmap:(.*)/) &&
+        child.nodeName.match(/vmap:(.*)/)[1] === name)
+    ) {
       children.push(child);
     }
   }
@@ -39,7 +44,11 @@ function parseNodeText(node) {
  * @return {Object}
  */
 function parseXMLNode(node) {
-  const parsedNode = {};
+  const parsedNode = {
+    attributes: {},
+    children: {},
+    value: null
+  };
 
   const value = parseNodeText(node);
   if (value) {
@@ -51,10 +60,11 @@ function parseXMLNode(node) {
     for (let nodeAttrKey in nodeAttrs) {
       const nodeAttr = nodeAttrs[nodeAttrKey];
 
-      if (nodeAttr.nodeName && nodeAttr.nodeValue) {
-        if (!parsedNode.attributes) {
-          parsedNode.attributes = {};
-        }
+      if (
+        nodeAttr.nodeName &&
+        nodeAttr.nodeValue !== undefined &&
+        nodeAttr.nodeValue !== null
+      ) {
         parsedNode.attributes[nodeAttr.nodeName] = nodeAttr.nodeValue;
       }
     }
@@ -66,9 +76,6 @@ function parseXMLNode(node) {
         childNode.nodeName !== '#text' && childNode.nodeName !== '#comment'
     )
     .forEach(childNode => {
-      if (!parsedNode.children) {
-        parsedNode.children = {};
-      }
       parsedNode.children[childNode.nodeName] = parseXMLNode(childNode);
     });
 
