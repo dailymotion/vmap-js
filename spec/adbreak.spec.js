@@ -3,7 +3,11 @@ import { readXMLFile } from './utils';
 
 describe('AdBreaks', () => {
   const xml = readXMLFile('samples/correct-vmap.xml');
+  const xmlWithExtensions = readXMLFile(
+    'samples/correct-vmap-with-extension.xml'
+  );
   const vmap = new VMAP(xml);
+  const vmapWithExtensions = new VMAP(xmlWithExtensions);
 
   describe('#1 ad break', () => {
     const adbreak = vmap.adBreaks[0];
@@ -112,6 +116,50 @@ describe('AdBreaks', () => {
 
       expect(trackingEvents[0].event).toBe('breakStart');
       expect(trackingEvents[0].uri).toBe('http://server.com/breakstart');
+    });
+  });
+
+  describe('Ad break with extensions', () => {
+    const adbreak = vmapWithExtensions.adBreaks[0];
+
+    it('should parse extensions', () => {
+      expect(adbreak.extensions).toEqual([
+        {
+          attributes: {
+            extAttribute: 'extAttribute content',
+            extAttribute2: 'extAttribute2 content'
+          },
+          children: {
+            'vmap:Test': {
+              attributes: {
+                testAttribute: 'testAttribute content',
+                testAttribute2: 'testAttribute2 content'
+              },
+              value: 'Test value'
+            },
+            'vmap:Test2': {
+              attributes: {
+                test2Attribute: 'test2Attribute content',
+                test2Attribute2: 'test2Attribute2 content'
+              },
+              value: 'Test2 value'
+            }
+          },
+          value: 'Extension value'
+        },
+        {
+          children: {
+            'vmap:Child': {
+              attributes: {
+                childAttribute: 'childAttribute content',
+                childAttribute2: 'childAttribute2 content'
+              },
+              value: 'Child value'
+            }
+          },
+          value: 'Extension2 value'
+        }
+      ]);
     });
   });
 });
