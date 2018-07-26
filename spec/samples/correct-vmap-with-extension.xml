@@ -1,0 +1,58 @@
+<vmap:VMAP xmlns:vmap="http://www.iab.net/vmap-1.0" version="1.0">
+
+  <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
+
+    <vmap:Extensions>
+      <vmap:Extension extAttribute="extAttribute content" extAttribute2="extAttribute2 content">
+        Extension value
+        <vmap:Test testAttribute="testAttribute content" testAttribute2="testAttribute2 content">
+          Test value
+        </vmap:Test>
+        <vmap:Test2 test2Attribute="test2Attribute content" test2Attribute2="test2Attribute2 content">
+          Test2 value
+        </vmap:Test2>
+      </vmap:Extension>
+      <vmap:Extension>
+        Extension2 value
+        <vmap:Child childAttribute="childAttribute content" childAttribute2="childAttribute2 content">
+          Child value
+        </vmap:Child>
+      </vmap:Extension>
+    </vmap:Extensions>
+
+    <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="1">
+      <vmap:VASTAdData>
+        <VAST version="3.0" xsi:noNamespaceSchemaLocation="vast.xsd">
+        </VAST>
+      </vmap:VASTAdData>
+    </vmap:AdSource>
+    <vmap:TrackingEvents>
+      <vmap:Tracking event="breakStart">http://server.com/breakstart</vmap:Tracking>
+      <vmap:Tracking event="breakEnd">http://server.com/breakend</vmap:Tracking>
+      <vmap:Tracking event="breakEnd">http://server.com/breakend2</vmap:Tracking>
+      <vmap:Tracking event="error">http://server.com/error?[ERRORCODE]</vmap:Tracking>
+    </vmap:TrackingEvents>
+  </vmap:AdBreak>
+
+  <vmap:AdBreak breakType="linear" breakId="myid" timeOffset="00:10:23.125">
+    <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="2">
+      <vmap:VASTAdData>
+        <VAST version="3.0" xsi:noNamespaceSchemaLocation="vast.xsd">...
+        </VAST>
+      </vmap:VASTAdData>
+    </vmap:AdSource>
+    <vmap:TrackingEvents>
+      <vmap:Tracking event="breakStart">http://server.com/breakstart</vmap:Tracking>
+    </vmap:TrackingEvents>
+  </vmap:AdBreak>
+
+  <vmap:AdBreak breakType="linear" breakId="mypost" timeOffset="end">
+    <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="3">
+    <vmap:AdTagURI>http://server.com/vast.xml</vmap:AdTagURI>
+    </vmap:AdSource>
+    <vmap:TrackingEvents>
+      <vmap:Tracking event="breakStart">http://server.com/breakstart</vmap:Tracking>
+    </vmap:TrackingEvents>
+  </vmap:AdBreak>
+
+</vmap:VMAP>
