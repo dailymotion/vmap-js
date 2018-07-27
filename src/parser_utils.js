@@ -5,22 +5,12 @@
  * @return {Array}
  */
 function childrenByName(node, name) {
-  const children = [];
-  const childNodes = node.childNodes;
-
-  for (let childKey in childNodes) {
-    const child = childNodes[childKey];
-
-    if (
+  return [...node.childNodes].filter(
+    child =>
       child.nodeName === name ||
-      (child.nodeName &&
-        child.nodeName.match(/vmap:(.*)/) &&
-        child.nodeName.match(/vmap:(.*)/)[1] === name)
-    ) {
-      children.push(child);
-    }
-  }
-  return children;
+      name === `vmap:${child.nodeName}` ||
+      child.nodeName === `vmap:${name}`
+  );
 }
 
 /**
@@ -50,16 +40,10 @@ function parseXMLNode(node) {
     value: null
   };
 
-  const value = parseNodeText(node);
-  if (value) {
-    parsedNode.value = value;
-  }
+  parsedNode.value = parseNodeText(node) || null;
 
-  const nodeAttrs = node.attributes;
-  if (nodeAttrs) {
-    for (let nodeAttrKey in nodeAttrs) {
-      const nodeAttr = nodeAttrs[nodeAttrKey];
-
+  if (node.attributes) {
+    [...node.attributes].forEach(nodeAttr => {
       if (
         nodeAttr.nodeName &&
         nodeAttr.nodeValue !== undefined &&
@@ -67,7 +51,7 @@ function parseXMLNode(node) {
       ) {
         parsedNode.attributes[nodeAttr.nodeName] = nodeAttr.nodeValue;
       }
-    }
+    });
   }
 
   [...node.childNodes]
