@@ -1,0 +1,9 @@
+<vmap:Extension extAttribute="extAttribute content" extAttribute2="extAttribute2 content">
+  Extension value
+  <vmap:Test testAttribute="testAttribute content" testAttribute2="testAttribute2 content">
+    Test value
+  </vmap:Test>
+  <vmap:Test2 test2Attribute="test2Attribute content" test2Attribute2="test2Attribute2 content">
+    Test2 value
+  </vmap:Test2>
+</vmap:Extension>
