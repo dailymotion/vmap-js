@@ -1,4 +1,5 @@
 import VMAPAdBreak from './adbreak';
+import { childrenByName, parseXMLNode } from './parser_utils';
 
 class VMAP {
   constructor(xml) {
@@ -21,7 +22,9 @@ class VMAP {
           this.adBreaks.push(new VMAPAdBreak(node));
           break;
         case 'Extensions':
-          this.extensions = node.childNodes;
+          this.extensions = childrenByName(node, 'Extension').map(extension =>
+            parseXMLNode(extension)
+          );
           break;
       }
     }
