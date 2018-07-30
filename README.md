@@ -45,7 +45,10 @@ xhr.onreadystatechange = function() {
 
 * `version`: The VMAP version (should be 1.0).
 * `adBreaks`: An array of `VMAPAdBreak` objects.
-* `extensions`: An array of XML nodes for each extension left as-is if any.
+* `extensions`: An array of `Object` with
+    * `children`: `Object` containing all this extension children and their name as the key
+    * `attribute`: `Object` containing all this extension attributes and their name as the key
+    * `value`: All of the text nodes of this extension concatenated
 
 ### VMAPAdBreak
 
@@ -61,7 +64,10 @@ Provides information about an ad break.
 * `trackingEvents`: An array of `Object` with tracking URLs
     * `event`: The name of the event to track for the element. Can be one of breakStart, breakEnd or error.
     * `uri`: The URI of the tracker.
-* `extensions`: An array of XML nodes for each extension left as-is if any.
+* `extensions`: An array of `Object` with
+    * `children`: `Object` containing all this extension children and their name as the key
+    * `attribute`: `Object` containing all this extension attributes and their name as the key
+    * `value`: All of the text nodes of this extension concatenated
 
 #### Methods
 
