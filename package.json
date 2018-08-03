@@ -26,7 +26,7 @@
     "module": "src/index.js",
     "scripts": {
         "test": "jasmine",
-        "build": "rollup -c rollup.config.js --config-node",
+        "build": "rollup -c rollup.config.js",
         "precommit": "pretty-quick --staged"
     },
     "devDependencies": {
