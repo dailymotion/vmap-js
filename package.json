@@ -20,7 +20,7 @@
     },
     "license": "MIT",
     "engines": {
-        "node": "8.9.4"
+        "node": ">=8.9.4"
     },
     "main": "dist/vmap-js-node.js",
     "module": "src/index.js",
