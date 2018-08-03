@@ -86,6 +86,34 @@ Provides the player with either an inline ad response or a reference to an ad re
 * `adTagURI`: Contains a URI to the VAST.
 * `customData`: Contains custom ad data.
 
+## Support and compatibility
+The library is 100% written in JavaScript and the source code uses modern features like `modules`, `classes`, ecc... . Make sure your environment supports these features, or transpile the library when bundling your project.
+
+### Pre-bundled versions
+We provide several pre-bundled versions of the library (see [`dist` directory](dist/))
+
+#### Browser
+A pre-bundled version of VMAP-jsis available: [`vmap-js.js`](dist/vmap-js.js).
+
+You can add the script directly to your page and access the library through the `VMAP` constructor.
+
+```html
+<script src="vmap-js.js"></script>
+```
+
+```javascript
+var vmap = new VMAP(vmapXML);
+```
+
+#### Node
+A pre-bundled version for node is available too: [`vmap-js-node.js`](dist/vmap-js-node.js).
+
+```javascript
+const VMAP = require('vmap')
+
+const vmap = new VMAP(vmapXML);
+```
+
 ## Build and tests
 
 Install dependencies with:

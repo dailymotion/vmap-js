@@ -22,11 +22,11 @@
     "engines": {
         "node": "8.9.4"
     },
-    "main": "vmap-js.js",
+    "main": "dist/vmap-js-node.js",
     "module": "src/index.js",
     "scripts": {
         "test": "jasmine",
-        "build": "rollup -c rollup.config.js",
+        "build": "rollup -c rollup.config.js --config-node",
         "precommit": "pretty-quick --staged"
     },
     "devDependencies": {
@@ -36,6 +36,7 @@
         "babel-register": "^6.26.0",
         "husky": "^0.14.3",
         "jasmine": "^3.0.0",
+        "path": "^0.12.7",
         "prettier": "1.10.2",
         "pretty-quick": "^1.2.2",
         "rollup": "^0.55.1",
