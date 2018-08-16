@@ -1,6 +1,6 @@
 import {
   childrenByName,
-  parseNodeText,
+  parseNodeValue,
   parseXMLNode
 } from '../src/parser_utils';
 import { readXMLFile } from './utils';
@@ -98,7 +98,7 @@ describe('ParserUtils', () => {
     });
   });
 
-  describe('parseNodeText function', () => {
+  describe('parseNodeValue function', () => {
     const testNode = {
       childNodes: [
         {
@@ -126,7 +126,7 @@ describe('ParserUtils', () => {
     };
 
     it('should correctly extract text', () => {
-      const result = parseNodeText(testNode);
+      const result = parseNodeValue(testNode);
 
       expect(result).toEqual('BlablaBlobloblo');
     });
@@ -164,7 +164,13 @@ describe('ParserUtils', () => {
                 value: 'Test2 value'
               }
             },
-            value: 'Extension value'
+            value: {
+              noAd: {
+                reasonId: 1308,
+                reason: 'component style|hero'
+              },
+              inventoryId: 'd2e50e4e-bd0f-468a-9d82-990889c2c92e'
+            }
           }
         },
         value: null
