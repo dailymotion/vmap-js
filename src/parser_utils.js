@@ -14,39 +14,39 @@ function childrenByName(node, name) {
 }
 
 /**
- * Parses a node value
+ * Parses a node value giving priority to CDATA as a JSON over text, if CDATA is not a valid JSON it is converted to text
  * @param  {Object} node - The node to parse the value from.
- * @return {String}
+ * @return {String|Object}
  */
 function parseNodeValue(node) {
   const childNodes = node && node.childNodes && [...node.childNodes];
+  if (!childNodes) {
+    return {};
+  }
 
-  // Trying to find and parse cdata as JSON
-  const cdatas =
-    childNodes &&
-    childNodes.filter(childNode => childNode.nodeName === '#cdata-section');
+  // Trying to find and parse CDATA as JSON
+  const cdatas = childNodes.filter(
+    childNode => childNode.nodeName === '#cdata-section'
+  );
   if (cdatas && cdatas.length > 0) {
     try {
       return JSON.parse(cdatas[0].data);
     } catch (e) {}
   }
 
-  // Didn't find any cdata or failed to parse it
-  return (
-    childNodes &&
-    childNodes.reduce((previousText, childNode) => {
-      let nodeText = '';
-      switch (childNode.nodeName) {
-        case '#text':
-          nodeText = childNode.textContent.trim();
-          break;
-        case '#cdata-section':
-          nodeText = childNode.data;
-          break;
-      }
-      return previousText + nodeText;
-    }, '')
-  );
+  // Didn't find any CDATA or failed to parse it as JSON
+  return childNodes.reduce((previousText, childNode) => {
+    let nodeText = '';
+    switch (childNode.nodeName) {
+      case '#text':
+        nodeText = childNode.textContent.trim();
+        break;
+      case '#cdata-section':
+        nodeText = childNode.data;
+        break;
+    }
+    return previousText + nodeText;
+  }, '');
 }
 
 /**
@@ -58,10 +58,10 @@ function parseXMLNode(node) {
   const parsedNode = {
     attributes: {},
     children: {},
-    value: null
+    value: {}
   };
 
-  parsedNode.value = parseNodeValue(node) || null;
+  parsedNode.value = parseNodeValue(node);
 
   if (node.attributes) {
     [...node.attributes].forEach(nodeAttr => {

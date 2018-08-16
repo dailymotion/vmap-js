@@ -97,18 +97,11 @@ A pre-bundled version of VMAP-jsis available: [`vmap-js.js`](dist/vmap-js.js).
 
 You can add the script directly to your page and access the library through the `VMAP` constructor.
 
-Run `npm run dev` to watch changes.
-
-Then serve an HTML file located at the project root.
-
 ```html
 <script src="dist/vmap-js.js"></script>
 ```
 
 ```javascript
-var myXml = `[VMAP xml as string]`;
-var parser = new DOMParser();
-var vmapXML = parser.parseFromString(myXml, 'application/xml');
 var vmap = new VMAP(vmapXML);
 ```
 
