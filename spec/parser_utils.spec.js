@@ -165,11 +165,11 @@ describe('ParserUtils', () => {
               }
             },
             value: {
-              noAd: {
-                reasonId: 1308,
-                reason: 'component style|hero'
+              example: {
+                property1: 1234,
+                property2: 'abcd'
               },
-              inventoryId: 'd2e50e4e-bd0f-468a-9d82-990889c2c92e'
+              another: 'qwerty'
             }
           }
         },
