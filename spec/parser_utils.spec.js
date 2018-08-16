@@ -173,7 +173,7 @@ describe('ParserUtils', () => {
             }
           }
         },
-        value: null
+        value: ''
       });
     });
   });
