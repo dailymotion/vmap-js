@@ -1,5 +1,5 @@
 <vmap:Extension extAttribute="extAttribute content" extAttribute2="extAttribute2 content">
-  <![CDATA[{"noAd":{"reasonId":1308,"reason":"component style|hero"},"inventoryId":"d2e50e4e-bd0f-468a-9d82-990889c2c92e"}]]>
+  <![CDATA[{"example":{"property1":1234,"property2":"abcd"},"another":"qwerty"}]]>
   <vmap:Test testAttribute="testAttribute content" testAttribute2="testAttribute2 content">
     Test value
   </vmap:Test>
