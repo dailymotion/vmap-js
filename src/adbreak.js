@@ -34,7 +34,6 @@ class VMAPAdBreak {
           this.extensions = childrenByName(node, 'Extension').map(extension =>
             parseXMLNode(extension)
           );
-          console.log(this.extensions);
           break;
       }
     }
