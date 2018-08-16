@@ -99,7 +99,7 @@ You can add the script directly to your page and access the library through the 
 
 Run `npm run dev` to watch changes.
 
-Serve an HTML file located at the project root.
+Then serve an HTML file located at the project root.
 
 ```html
 <script src="dist/vmap-js.js"></script>
