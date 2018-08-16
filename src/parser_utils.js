@@ -14,17 +14,38 @@ function childrenByName(node, name) {
 }
 
 /**
- * Parses a node text (for legacy support).
- * @param  {Object} node - The node to parse the text from.
+ * Parses a node value
+ * @param  {Object} node - The node to parse the value from.
  * @return {String}
  */
-function parseNodeText(node) {
+function parseNodeValue(node) {
+  const childNodes = node && node.childNodes && [...node.childNodes];
+
+  // Trying to find and parse cdata as JSON
+  const cdatas =
+    childNodes &&
+    childNodes.filter(childNode => childNode.nodeName === '#cdata-section');
+  if (cdatas && cdatas.length > 0) {
+    try {
+      return JSON.parse(cdatas[0].data);
+    } catch (e) {}
+  }
+
+  // Didn't find any cdata or failed to parse it
   return (
-    node &&
-    node.childNodes &&
-    [...node.childNodes]
-      .filter(node => node.nodeName === '#text')
-      .reduce((previous, current) => previous + current.textContent.trim(), '')
+    childNodes &&
+    childNodes.reduce((previousText, childNode) => {
+      let nodeText = '';
+      switch (childNode.nodeName) {
+        case '#text':
+          nodeText = childNode.textContent.trim();
+          break;
+        case '#cdata-section':
+          nodeText = childNode.data;
+          break;
+      }
+      return previousText + nodeText;
+    }, '')
   );
 }
 
@@ -40,7 +61,7 @@ function parseXMLNode(node) {
     value: null
   };
 
-  parsedNode.value = parseNodeText(node) || null;
+  parsedNode.value = parseNodeValue(node) || null;
 
   if (node.attributes) {
     [...node.attributes].forEach(nodeAttr => {
@@ -54,16 +75,15 @@ function parseXMLNode(node) {
     });
   }
 
-  [...node.childNodes]
-    .filter(
-      childNode =>
-        childNode.nodeName !== '#text' && childNode.nodeName !== '#comment'
-    )
-    .forEach(childNode => {
-      parsedNode.children[childNode.nodeName] = parseXMLNode(childNode);
-    });
+  if (node.childNodes) {
+    [...node.childNodes]
+      .filter(childNode => childNode.nodeName.substring(0, 1) !== '#')
+      .forEach(childNode => {
+        parsedNode.children[childNode.nodeName] = parseXMLNode(childNode);
+      });
+  }
 
   return parsedNode;
 }
 
-export { childrenByName, parseNodeText, parseXMLNode };
+export { childrenByName, parseNodeValue, parseXMLNode };

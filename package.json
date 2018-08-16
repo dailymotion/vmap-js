@@ -27,7 +27,8 @@
     "scripts": {
         "test": "jasmine",
         "build": "rollup -c rollup.config.js",
-        "precommit": "pretty-quick --staged"
+        "precommit": "pretty-quick --staged",
+        "dev": "rollup -c rollup.config.js --watch"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",
