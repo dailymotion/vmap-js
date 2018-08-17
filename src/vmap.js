@@ -14,7 +14,7 @@ class VMAP {
     this.adBreaks = [];
     this.extensions = [];
 
-    for (let nodeKey in xml.documentElement.childNodes) {
+    for (const nodeKey in xml.documentElement.childNodes) {
       const node = xml.documentElement.childNodes[nodeKey];
 
       switch (node.localName) {

@@ -7,14 +7,14 @@ class VMAPAdSource {
     this.adTagURI = null;
     this.customData = null;
 
-    for (let nodeKey in xml.childNodes) {
+    for (const nodeKey in xml.childNodes) {
       const node = xml.childNodes[nodeKey];
 
       switch (node.localName) {
         case 'AdTagURI':
           this.adTagURI = {
             templateType: node.getAttribute('templateType'),
-            uri: (node.textContent || node.text || '').trim()
+            uri: (node.textContent || node.text || '').trim(),
           };
           break;
         case 'VASTAdData':

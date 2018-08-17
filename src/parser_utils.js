@@ -25,9 +25,7 @@ function parseNodeValue(node) {
   }
 
   // Trying to find and parse CDATA as JSON
-  const cdatas = childNodes.filter(
-    childNode => childNode.nodeName === '#cdata-section'
-  );
+  const cdatas = childNodes.filter(childNode => childNode.nodeName === '#cdata-section');
   if (cdatas && cdatas.length > 0) {
     try {
       return JSON.parse(cdatas[0].data);
@@ -58,18 +56,14 @@ function parseXMLNode(node) {
   const parsedNode = {
     attributes: {},
     children: {},
-    value: {}
+    value: {},
   };
 
   parsedNode.value = parseNodeValue(node);
 
   if (node.attributes) {
     [...node.attributes].forEach(nodeAttr => {
-      if (
-        nodeAttr.nodeName &&
-        nodeAttr.nodeValue !== undefined &&
-        nodeAttr.nodeValue !== null
-      ) {
+      if (nodeAttr.nodeName && nodeAttr.nodeValue !== undefined && nodeAttr.nodeValue !== null) {
         parsedNode.attributes[nodeAttr.nodeName] = nodeAttr.nodeValue;
       }
     });
