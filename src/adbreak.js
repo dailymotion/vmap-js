@@ -11,7 +11,7 @@ class VMAPAdBreak {
     this.trackingEvents = [];
     this.extensions = [];
 
-    for (let nodeKey in xml.childNodes) {
+    for (const nodeKey in xml.childNodes) {
       const node = xml.childNodes[nodeKey];
 
       switch (node.localName) {
@@ -19,13 +19,13 @@ class VMAPAdBreak {
           this.adSource = new VMAPAdSource(node);
           break;
         case 'TrackingEvents':
-          for (let subnodeKey in node.childNodes) {
+          for (const subnodeKey in node.childNodes) {
             const subnode = node.childNodes[subnodeKey];
 
             if (subnode.localName === 'Tracking') {
               this.trackingEvents.push({
                 event: subnode.getAttribute('event'),
-                uri: (subnode.textContent || subnode.text || '').trim()
+                uri: (subnode.textContent || subnode.text || '').trim(),
               });
             }
           }
@@ -40,7 +40,7 @@ class VMAPAdBreak {
   }
 
   track(event, errorCode) {
-    for (let trackerKey in this.trackingEvents) {
+    for (const trackerKey in this.trackingEvents) {
       const tracker = this.trackingEvents[trackerKey];
 
       if (tracker.event === event) {
