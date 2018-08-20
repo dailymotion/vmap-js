@@ -27,7 +27,7 @@
     "scripts": {
         "test": "jasmine",
         "build": "rollup -c rollup.config.js",
-        "precommit": "eslint --fix . && pretty-quick --staged",
+        "precommit": "npm run lint && pretty-quick --staged",
         "dev": "rollup -c rollup.config.js --watch",
         "lint": "eslint --fix ."
     },
