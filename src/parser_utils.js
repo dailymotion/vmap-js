@@ -6,7 +6,7 @@
  */
 function childrenByName(node, name) {
   return [...node.childNodes].filter(
-    child =>
+    (child) =>
       child.nodeName === name ||
       name === `vmap:${child.nodeName}` ||
       child.nodeName === `vmap:${name}`
@@ -25,7 +25,7 @@ function parseNodeValue(node) {
   }
 
   // Trying to find and parse CDATA as JSON
-  const cdatas = childNodes.filter(childNode => childNode.nodeName === '#cdata-section');
+  const cdatas = childNodes.filter((childNode) => childNode.nodeName === '#cdata-section');
   if (cdatas && cdatas.length > 0) {
     try {
       return JSON.parse(cdatas[0].data);
@@ -62,7 +62,7 @@ function parseXMLNode(node) {
   parsedNode.value = parseNodeValue(node);
 
   if (node.attributes) {
-    [...node.attributes].forEach(nodeAttr => {
+    [...node.attributes].forEach((nodeAttr) => {
       if (nodeAttr.nodeName && nodeAttr.nodeValue !== undefined && nodeAttr.nodeValue !== null) {
         parsedNode.attributes[nodeAttr.nodeName] = nodeAttr.nodeValue;
       }
@@ -71,8 +71,8 @@ function parseXMLNode(node) {
 
   if (node.childNodes) {
     [...node.childNodes]
-      .filter(childNode => childNode.nodeName.substring(0, 1) !== '#')
-      .forEach(childNode => {
+      .filter((childNode) => childNode.nodeName.substring(0, 1) !== '#')
+      .forEach((childNode) => {
         parsedNode.children[childNode.nodeName] = parseXMLNode(childNode);
       });
   }

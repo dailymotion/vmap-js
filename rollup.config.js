@@ -10,14 +10,14 @@ const plugins = [
       [
         'es2015',
         {
-          modules: false
-        }
-      ]
+          modules: false,
+        },
+      ],
     ],
     plugins: [externalHelpers],
-    exclude: 'node_modules/**'
+    exclude: 'node_modules/**',
   }),
-  uglify()
+  uglify(),
 ];
 
 export default [
@@ -25,17 +25,17 @@ export default [
     input: 'src/index.js',
     output: {
       file: path.resolve(__dirname, 'dist', 'vmap-js-node.js'),
-      format: 'cjs'
+      format: 'cjs',
     },
-    plugins
+    plugins,
   },
   {
     input: 'src/index.js',
     output: {
       file: path.resolve(__dirname, 'dist', 'vmap-js.js'),
       format: 'iife',
-      name: 'VMAP'
+      name: 'VMAP',
     },
-    plugins
-  }
+    plugins,
+  },
 ];

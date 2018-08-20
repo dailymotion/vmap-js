@@ -27,9 +27,9 @@
     "scripts": {
         "test": "jasmine",
         "build": "rollup -c rollup.config.js",
-        "precommit": "npm run lint && pretty-quick --staged",
+        "precommit": "eslint --fix . && pretty-quick --staged",
         "dev": "rollup -c rollup.config.js --watch",
-        "lint": "eslint --fix ."
+        "lint": "eslint --fix . && prettier --write \"**/*.js\""
     },
     "devDependencies": {
         "babel-core": "^6.26.0",

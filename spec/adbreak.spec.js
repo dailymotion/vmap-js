@@ -9,7 +9,7 @@ describe('AdBreaks', () => {
     const adbreak = vmap.adBreaks[0];
     let tracked = [];
 
-    adbreak.tracker = uri => tracked.push(uri);
+    adbreak.tracker = (uri) => tracked.push(uri);
 
     beforeEach(() => (tracked = []));
 
@@ -52,10 +52,7 @@ describe('AdBreaks', () => {
     it('should call end trackers', () => {
       adbreak.track('breakEnd');
 
-      expect(tracked).toEqual([
-        'http://server.com/breakend',
-        'http://server.com/breakend2'
-      ]);
+      expect(tracked).toEqual(['http://server.com/breakend', 'http://server.com/breakend2']);
     });
 
     it('should call error trackers with variable', () => {
@@ -116,9 +113,7 @@ describe('AdBreaks', () => {
   });
 
   describe('Ad break with extensions', () => {
-    const xmlWithExtensions = readXMLFile(
-      'samples/correct-vmap-with-extension.xml'
-    );
+    const xmlWithExtensions = readXMLFile('samples/correct-vmap-with-extension.xml');
     const vmapWithExtensions = new VMAP(xmlWithExtensions);
     const adbreak = vmapWithExtensions.adBreaks[0];
 
@@ -127,27 +122,27 @@ describe('AdBreaks', () => {
         {
           attributes: {
             extAttribute: 'extAttribute content',
-            extAttribute2: 'extAttribute2 content'
+            extAttribute2: 'extAttribute2 content',
           },
           children: {
             'vmap:Test': {
               attributes: {
                 testAttribute: 'testAttribute content',
-                testAttribute2: 'testAttribute2 content'
+                testAttribute2: 'testAttribute2 content',
               },
               children: {},
-              value: 'Test value'
+              value: 'Test value',
             },
             'vmap:Test2': {
               attributes: {
                 test2Attribute: 'test2Attribute content',
-                test2Attribute2: 'test2Attribute2 content'
+                test2Attribute2: 'test2Attribute2 content',
               },
               children: {},
-              value: 'Test2 value'
-            }
+              value: 'Test2 value',
+            },
           },
-          value: 'Extension value'
+          value: 'Extension value',
         },
         {
           attributes: {},
@@ -155,14 +150,14 @@ describe('AdBreaks', () => {
             'vmap:Child': {
               attributes: {
                 childAttribute: 'childAttribute content',
-                childAttribute2: 'childAttribute2 content'
+                childAttribute2: 'childAttribute2 content',
               },
               children: {},
-              value: 'Child value'
-            }
+              value: 'Child value',
+            },
           },
-          value: 'Extension2 value'
-        }
+          value: 'Extension2 value',
+        },
       ]);
     });
   });

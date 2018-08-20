@@ -1,8 +1,4 @@
-import {
-  childrenByName,
-  parseNodeValue,
-  parseXMLNode
-} from '../src/parser_utils';
+import { childrenByName, parseNodeValue, parseXMLNode } from '../src/parser_utils';
 import { readXMLFile } from './utils';
 
 describe('ParserUtils', () => {
@@ -10,39 +6,39 @@ describe('ParserUtils', () => {
     const testNode = {
       childNodes: [
         {
-          nodeName: 'Test'
+          nodeName: 'Test',
         },
         {
-          nodeName: 'Test2'
+          nodeName: 'Test2',
         },
         {
-          nodeName: 'vmap:Test'
+          nodeName: 'vmap:Test',
         },
         {
-          nodeName: 'vmap:Test2'
+          nodeName: 'vmap:Test2',
         },
         {
-          nodeName: 'Test:Test'
+          nodeName: 'Test:Test',
         },
         {
-          nodeName: 'Test:Test2'
+          nodeName: 'Test:Test2',
         },
         {
-          nodeName: 'vmap:Test:Test'
+          nodeName: 'vmap:Test:Test',
         },
         {
-          nodeName: 'vmap:'
+          nodeName: 'vmap:',
         },
         {
-          nodeName: ''
+          nodeName: '',
         },
         {
-          nodeName: undefined
+          nodeName: undefined,
         },
         {
-          nodeName: null
-        }
-      ]
+          nodeName: null,
+        },
+      ],
     };
 
     it('should select children named Test', () => {
@@ -50,11 +46,11 @@ describe('ParserUtils', () => {
 
       expect(result).toEqual([
         {
-          nodeName: 'Test'
+          nodeName: 'Test',
         },
         {
-          nodeName: 'vmap:Test'
-        }
+          nodeName: 'vmap:Test',
+        },
       ]);
     });
 
@@ -63,11 +59,11 @@ describe('ParserUtils', () => {
 
       expect(result).toEqual([
         {
-          nodeName: 'Test'
+          nodeName: 'Test',
         },
         {
-          nodeName: 'vmap:Test'
-        }
+          nodeName: 'vmap:Test',
+        },
       ]);
     });
 
@@ -76,11 +72,11 @@ describe('ParserUtils', () => {
 
       expect(result).toEqual([
         {
-          nodeName: 'Test:Test'
+          nodeName: 'Test:Test',
         },
         {
-          nodeName: 'vmap:Test:Test'
-        }
+          nodeName: 'vmap:Test:Test',
+        },
       ]);
     });
 
@@ -89,11 +85,11 @@ describe('ParserUtils', () => {
 
       expect(result).toEqual([
         {
-          nodeName: 'Test:Test'
+          nodeName: 'Test:Test',
         },
         {
-          nodeName: 'vmap:Test:Test'
-        }
+          nodeName: 'vmap:Test:Test',
+        },
       ]);
     });
   });
@@ -103,26 +99,26 @@ describe('ParserUtils', () => {
       childNodes: [
         {
           nodeName: 'Test',
-          textContent: 'Wrong'
+          textContent: 'Wrong',
         },
         {
           nodeName: '#text',
-          textContent: '       Blabla    '
+          textContent: '       Blabla    ',
         },
         {
-          nodeName: ''
+          nodeName: '',
         },
         {
-          nodeName: undefined
+          nodeName: undefined,
         },
         {
-          nodeName: null
+          nodeName: null,
         },
         {
           nodeName: '#text',
-          textContent: '       Blobloblo    '
-        }
-      ]
+          textContent: '       Blobloblo    ',
+        },
+      ],
     };
 
     it('should correctly extract text', () => {
@@ -144,36 +140,36 @@ describe('ParserUtils', () => {
           'vmap:Extension': {
             attributes: {
               extAttribute: 'extAttribute content',
-              extAttribute2: 'extAttribute2 content'
+              extAttribute2: 'extAttribute2 content',
             },
             children: {
               'vmap:Test': {
                 attributes: {
                   testAttribute: 'testAttribute content',
-                  testAttribute2: 'testAttribute2 content'
+                  testAttribute2: 'testAttribute2 content',
                 },
                 children: {},
-                value: 'Test value'
+                value: 'Test value',
               },
               'vmap:Test2': {
                 attributes: {
                   test2Attribute: 'test2Attribute content',
-                  test2Attribute2: 'test2Attribute2 content'
+                  test2Attribute2: 'test2Attribute2 content',
                 },
                 children: {},
-                value: 'Test2 value'
-              }
+                value: 'Test2 value',
+              },
             },
             value: {
               example: {
                 property1: 1234,
-                property2: 'abcd'
+                property2: 'abcd',
               },
-              another: 'qwerty'
-            }
-          }
+              another: 'qwerty',
+            },
+          },
         },
-        value: ''
+        value: '',
       });
     });
   });
