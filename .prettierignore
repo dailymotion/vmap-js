@@ -8,3 +8,4 @@ node_modules
 test/*.xml
 vmap-js.js
 dist/*
+LICENSE
