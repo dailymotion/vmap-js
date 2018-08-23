@@ -48,7 +48,7 @@ xhr.onreadystatechange = function() {
 * `extensions`: An array of `Object` with
     * `children`: `Object` containing all this extension children and their name as the key
     * `attribute`: `Object` containing all this extension attributes and their name as the key
-    * `value`: All of the text nodes of this extension concatenated
+    * `value`: `Object` parsed from CDATA or as a fallback all of the text nodes of this extension concatenated
 
 ### VMAPAdBreak
 
@@ -67,7 +67,7 @@ Provides information about an ad break.
 * `extensions`: An array of `Object` with
     * `children`: `Object` containing all this extension children and their name as the key
     * `attribute`: `Object` containing all this extension attributes and their name as the key
-    * `value`: All of the text nodes of this extension concatenated
+    * `value`: `Object` parsed from CDATA or as a fallback all of the text nodes of this extension concatenated
 
 #### Methods
 
