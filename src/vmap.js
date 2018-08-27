@@ -3,7 +3,7 @@ import { childrenByName, parseXMLNode } from './parser_utils';
 
 class VMAP {
   constructor(xml) {
-    if (!xml || !xml.documentElement || !xml.documentElement.localName !== 'VMAP') {
+    if (!xml || !xml.documentElement || xml.documentElement.localName !== 'VMAP') {
       throw new Error('Not a VMAP document');
     }
 
