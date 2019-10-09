@@ -29,11 +29,12 @@ function parseNodeValue(node) {
   if (!node || !node.childNodes) {
     return {};
   }
+  const childNodes = node.childNodes;
 
   // Trying to find and parse CDATA as JSON
   const cdatas = [];
-  for (const childKey in node.childNodes) {
-    const childNode = node.childNodes[childKey];
+  for (const childKey in childNodes) {
+    const childNode = childNodes[childKey];
 
     if (childNode.nodeName === '#cdata-section') {
       cdatas.push(childNode);
@@ -48,8 +49,8 @@ function parseNodeValue(node) {
 
   // Didn't find any CDATA or failed to parse it as JSON
   let nodeText = '';
-  for (const childKey in node.childNodes) {
-    const childNode = node.childNodes[childKey];
+  for (const childKey in childNodes) {
+    const childNode = childNodes[childKey];
 
     switch (childNode.nodeName) {
       case '#text':
@@ -77,9 +78,10 @@ function parseXMLNode(node) {
 
   parsedNode.value = parseNodeValue(node);
 
-  if (node.attributes) {
-    for (const attrKey in node.attributes) {
-      const nodeAttr = node.attributes[attrKey];
+  const attributes = node.attributes;
+  if (attributes) {
+    for (const attrKey in attributes) {
+      const nodeAttr = attributes[attrKey];
 
       if (nodeAttr.nodeName && nodeAttr.nodeValue !== undefined && nodeAttr.nodeValue !== null) {
         parsedNode.attributes[nodeAttr.nodeName] = nodeAttr.nodeValue;
@@ -87,9 +89,10 @@ function parseXMLNode(node) {
     }
   }
 
-  if (node.childNodes) {
-    for (const childKey in node.childNodes) {
-      const childNode = node.childNodes[childKey];
+  const childNodes = node.childNodes;
+  if (childNodes) {
+    for (const childKey in childNodes) {
+      const childNode = childNodes[childKey];
       if (childNode.nodeName && childNode.nodeName.substring(0, 1) !== '#') {
         parsedNode.children[childNode.nodeName] = parseXMLNode(childNode);
       }
