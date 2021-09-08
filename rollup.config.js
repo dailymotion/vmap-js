@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import path from 'path';
 
 const plugins = [
@@ -8,7 +8,7 @@ const plugins = [
     presets: [['@babel/preset-env', { modules: false }]],
     exclude: ['node_modules/**'],
   }),
-  uglify(),
+  terser(),
 ];
 
 export default [
