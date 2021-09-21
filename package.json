@@ -1,49 +1,49 @@
 {
-    "name": "vmap",
-    "author": "Dailymotion <vast-client@dailymotion.com> (https://developer.dailymotion.com/)",
-    "version": "3.2.0",
-    "description": "Javascript VMAP Parser",
-    "keywords": [
-        "vmap",
-        "ad",
-        "advertising",
-        "iab",
-        "in-stream",
-        "video"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dailymotion/vmap-js"
-    },
-    "license": "MIT",
-    "engines": {
-        "node": ">=8.9.4"
-    },
-    "main": "dist/vmap-js-node.js",
-    "module": "src/index.js",
-    "scripts": {
-        "test": "jasmine",
-        "build": "rollup -c rollup.config.js",
-        "precommit": "eslint --fix . && pretty-quick --staged",
-        "dev": "rollup -c rollup.config.js --watch",
-        "lint": "eslint --fix . && prettier --write \"**/*.js\""
-    },
-    "devDependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-env": "^7.12.11",
-        "@babel/register": "^7.12.10",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^7.17.0",
-        "eslint-plugin-import": "^2.22.1",
-        "eslint-plugin-no-for-of-loops": "^1.0.1",
-        "husky": "^4.3.6",
-        "jasmine": "^3.6.3",
-        "path": "^0.12.7",
-        "prettier": "2.2.1",
-        "pretty-quick": "^3.1.0",
-        "rollup": "^2.35.1",
-        "rollup-plugin-babel": "^4.3.3",
-        "rollup-plugin-terser": "^7.0.2",
-        "xmldom": "github:xmldom/xmldom#0.7.0"
+  "name": "@dailymotion/vmap",
+  "author": "Dailymotion <vast-client@dailymotion.com> (https://developer.dailymotion.com/)",
+  "version": "3.2.0",
+  "description": "Javascript VMAP Parser",
+  "keywords": [
+    "vmap",
+    "ad",
+    "advertising",
+    "iab",
+    "in-stream",
+    "video"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dailymotion/vmap-js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.9.4"
+  },
+  "main": "dist/vmap-js-node.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "jasmine",
+    "build": "rollup -c rollup.config.js",
+    "precommit": "eslint --fix . && pretty-quick --staged",
+    "dev": "rollup -c rollup.config.js --watch",
+    "lint": "eslint --fix . && prettier --write \"**/*.js\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.17.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-no-for-of-loops": "^1.0.1",
+    "husky": "^4.3.6",
+    "jasmine": "^3.6.3",
+    "path": "^0.12.7",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
+    "rollup": "^2.35.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "xmldom": "github:xmldom/xmldom#0.7.0"
     }
 }
