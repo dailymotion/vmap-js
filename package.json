@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dailymotion/vmap-js.git"
+    "url": "https://github.com/dailymotion/vmap-js"
   },
   "license": "MIT",
   "engines": {
