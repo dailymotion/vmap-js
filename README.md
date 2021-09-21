@@ -11,7 +11,7 @@ Parse a VMAP XML document to Javascript object. Complies with [VMAP 1.0.1 spec](
 
 Install with npm
 ```
-npm install @dailymotion/vmap
+npm install vmap
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ Provide the `VMAP` constructor an XML in order to have a parsed version of it.
 Access `VMAP` properties using the APIs documented below.
 
 ``` javascript
-import VMAP from '@dailymotion/vmap';
+import VMAP from 'vmap';
 
 // Fetch VMAP as XML
 const xhr = new XMLHttpRequest();
@@ -109,7 +109,7 @@ var vmap = new VMAP(vmapXML);
 A pre-bundled version for node is available too: [`vmap-js-node.js`](dist/vmap-js-node.js).
 
 ```javascript
-const VMAP = require('@dailymotion/vmap')
+const VMAP = require('vmap')
 
 const vmap = new VMAP(vmapXML);
 ```
