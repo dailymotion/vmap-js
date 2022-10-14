@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     jasmine: true,
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     sourceType: 'module',
   },
