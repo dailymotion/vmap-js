@@ -1,7 +1,7 @@
 {
   "name": "@dailymotion/vmap",
   "author": "Dailymotion <vast-client@dailymotion.com> (https://developer.dailymotion.com/)",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Javascript VMAP Parser",
   "keywords": [
     "vmap",
