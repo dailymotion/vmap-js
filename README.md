@@ -1,6 +1,6 @@
 # VMAP Javascript Library
 
-[![Build Status](https://travis-ci.org/dailymotion/vmap-js.png)](https://travis-ci.org/dailymotion/vmap-js)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://travis-ci.org/dailymotion/vmap-js)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/vmap.svg)](https://badge.fury.io/js/vmap)
@@ -11,7 +11,7 @@ Parse a VMAP XML document to Javascript object. Complies with [VMAP 1.0.1 spec](
 
 Install with npm
 ```
-npm install vmap
+npm install @dailymotion/vmap
 ```
 
 ## Usage
@@ -24,17 +24,17 @@ Access `VMAP` properties using the APIs documented below.
 import VMAP from '@dailymotion/vmap';
 
 // Fetch VMAP as XML
-const xhr = new XMLHttpRequest();
-xhr.open('GET', vmapURL);
-xhr.send();
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === xhr.DONE) {
-        if (xhr.status === 200) {
-            // Get a parsed VMAP object
-            const vmap = new VMAP(xhr.responseXML);
-        }
-    }
-};
+fetch(vmapURL)
+    .then(response => response.text())
+    .then(xmlText => {
+        // Get a parsed VMAP object
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        const vmap = new VMAP(xmlDoc);
+    })
+    .catch(error => {
+        console.error('Error fetching VMAP:', error);
+    });
 ```
 
 ## API
