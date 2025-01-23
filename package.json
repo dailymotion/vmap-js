@@ -20,7 +20,7 @@
     "node": ">=12.22.1"
   },
   "main": "dist/vmap-js-node.js",
-  "module": "dist/vmap-js.js",
+  "browser": "dist/vmap-js.js",
   "scripts": {
     "test": "jest",
     "build": "rollup -c rollup.config.js",
