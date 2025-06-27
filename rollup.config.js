@@ -24,7 +24,7 @@ export default [
     input: 'src/index.js',
     output: {
       file: path.resolve(__dirname, 'dist', 'vmap-js.js'),
-      format: 'iife',
+      format: 'es',
       name: 'VMAP',
     },
     plugins,
